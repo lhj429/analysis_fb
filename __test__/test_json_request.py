@@ -1,6 +1,6 @@
 # test for web_request.json_request
 
-from analysis_fb3.collect.api import web_requset as wr
+from analysis_fb.collect.api import web_request as wr
 
 url = 'http://kickscar.cafe24.com:8080/myapp-api/api/user/list'
 

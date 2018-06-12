@@ -2,17 +2,17 @@
 from urllib.parse import urlencode
 from .web_request import json_request
 
-ACCESS_TOKEN = "EAACEdEose0cBAHOC3djXuiZCRFYoJZCLMMhpTKPU0uZBfmksVSQND9La91VcDmmR7NrFxPkbYwCuEBhLxlbxkqh47oiAF2sVqUn189yGPc7gbaDrOVHMVAdxhAjWDkPYh5JobazqT9OO0uiFZBzll1M2qmV6xQfoVyTL4DeCfYnsloZCUUE6PkxFJUxKuZACkCi1Mka2SUve7I0Fkjwo30PLGky2RUZCepmZCf9jeb0h6AZDZD"
+ACCESS_TOKEN = "EAACEdEose0cBAARXRjrPhh1IAvCYAm9QzzNUQ3YzrFxFQBm8NG8L3gSgtkHDPVQIz9CZCmxBVYZCbZBW1ULZBa1heBDgoZBA6rpT0DJNr2DtmsJYWl7ECSVfMC8sYWTrrzqSk5Xuy8sdgPZBof7ZBsM9Rv2yGZB8zWSuyjAq50v8YKWRZCTv9543ZBlGX1gCGX0PCvcqXs3cSBrReLvpKlPaZCLXZCnkOG6LyjVXvi0TpHdUdgZDZD"
 # 도구 - 그래프 API 탐색기 - 사용자 액세스 토큰 받기
 BASE_URL_FB_API = "https://graph.facebook.com/v3.0"
 
 
-def fb_gen_url(base=BASE_URL_FB_API, node='', **params):
-    url = '%s/%s/?%s' % (base, node, urlencode(params))
+def fb_gen_url(base=BASE_URL_FB_API, node='', **params):    # url 생성
+    url = '%s/%s/?%s' % (base, node, urlencode(params))     # node = 사용자, 사진, 페이지, 댓글과 같은 항목
     return url
 
 
-def fb_name_to_id(pagename):
+def fb_name_to_id(pagename):                                # 서비스 페이지에서는 페이지 이름이 url에 쓰이지만 API url에서는 페이지 아이디를 사용해야 한다. (pageName -> pageID)
     url = fb_gen_url(node=pagename, access_token=ACCESS_TOKEN)
     json_result = json_request(url=url)
     return json_result.get("id")

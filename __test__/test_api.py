@@ -1,4 +1,4 @@
-from analysis_fb3.collect.api import api
+from analysis_fb.collect.api import api
 
 # url = api.fb_gen_url(node='jtbcnews', a=10, b=20, s='kickscar')
 # print(url)
