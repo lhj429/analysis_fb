@@ -2,7 +2,7 @@
 from urllib.parse import urlencode
 from .web_request import json_request
 
-ACCESS_TOKEN = "EAACEdEose0cBALuXJ9WJqmS8bNxAqj0OoZAVfvbZCZCZAiXtv4jxt3SXZAS23h9q3i4uZCudcawmSOMKZA5BMDYCGf5yp2Uz67W2RpnJaBZBxMarpXabKZCq3OLu1dSaIEBmO05gTv1QSU8iGX8KV4ZA2mqCPs6mzTYZAncZAdpyENvYE9FLpreMz537v04JQMkMTJWGpWOpCyW3TN8rV4b63VrbuUxERVXx3kmLlZCmzLE5p3gZDZD"
+ACCESS_TOKEN = "EAACEdEose0cBAEy74PnZAZAqpGgZBLZCPnljLFtiBjd1CJU8LB5JzlsnxZBVhDWbXtyoXyUC8qdm6WQ8G09lPTwzWZCbevqR5Cjne11tDvzWj8uqrOf7HswE9gx8eUQsC7uW2P7defIPPyEo7q14ZAZCwXxHtOZAQCdxy55PrZCZCgjvxiEkzLsXz5JZBtvFoYCEphlL6ZBpZBODjQZAbBpEAbZBaJdWvFSpOa0rqgx56ZAV0PAlriAZDZD"
 # 도구 - 그래프 API 탐색기 - 사용자 액세스 토큰 받기
 BASE_URL_FB_API = "https://graph.facebook.com/v3.0"
 
@@ -27,6 +27,7 @@ def fb_fetch_posts(pagename, since, until):
     isnext = True
     while isnext is True:
         json_result = json_request(url=url)
+
         paging = None if json_result is None else json_result.get('paging')
         posts = None if json_result is None else json_result.get('data')
 
