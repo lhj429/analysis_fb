@@ -1,1 +1,1 @@
-from .visualizer import wordcloud
+from .visualizer import wordcloud, graph_bar
