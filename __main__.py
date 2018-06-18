@@ -52,6 +52,9 @@ if __name__ == '__main__':
         filename = '%s_%s_%s' % (item['pagename'], item['since'],  item['until'])         # 이미지 저장할 파일
         visualize.wordcloud(filename, count_m50)        # def wordcloud(filename, wordfreq): pytagcloud
         visualize.graph_bar(
+            title='%s 빈도 분석' % (item['pagename']),
+            xlabel='단어',
+            ylabel='빈도수',
             values=list(count_m50.values()),    # 그래프의 y 값 : count_m50 딕셔너리의 values
             ticks=list(count_m50.keys()),        # 그래프의 x 값 : count_m50 딕셔너리의 keys
             showgrid=False,     # 격자 여부
