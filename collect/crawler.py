@@ -3,8 +3,6 @@ import json
 from datetime import datetime, timedelta
 from .api import api
 
-RESULT_DIRECTORY = '__results__/crawling'
-
 def preprocess_post(post):
     # 공유수
     if 'shares' not in post:    # not in : 딕셔너리 오버로딩 (post가 딕셔너리라서 가능함)
@@ -29,12 +27,12 @@ def preprocess_post(post):
     kst += timedelta(hours=9)
     post['created_time'] = kst.strftime('%Y-%m-%d %H:%M:%S')   # strftime : 시간 포맷팅 (날짜/시간 -> 문자열 변환)
 
-def crawling(pagename, since, until, fetch=True):
+def crawling(pagename, since, until, fetch=True, result_directory='', access_token=''):
     results = []
-    filename = '%s/%s_%s_%s.json' %(RESULT_DIRECTORY, pagename, since, until)
+    filename = '%s/%s_%s_%s.json' %(result_directory, pagename, since, until)
 
     if fetch:
-        for posts in api.fb_fetch_posts(pagename, since, until):
+        for posts in api.fb_fetch_posts(pagename, since, until, access_token=access_token):
             for post in posts:
                 preprocess_post(post)
 
@@ -47,6 +45,4 @@ def crawling(pagename, since, until, fetch=True):
 
     return filename
 
-if os.path.exists(RESULT_DIRECTORY) is False:
-    os.makedirs(RESULT_DIRECTORY)
 
